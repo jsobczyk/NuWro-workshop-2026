@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NuWro Workshop, Wrocław, 16–18 September 2026">
+  <title>NuWro Workshop 2026</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="#home" data-tab-link="home">NuWro Workshop</a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-navigation">
+        Menu
+      </button>
+      <nav id="main-navigation" class="main-navigation" aria-label="Main navigation">
+        <button class="nav-link active" type="button" data-tab="home">Home</button>
+        <button class="nav-link" type="button" data-tab="venue">Venue</button>
+        <button class="nav-link" type="button" data-tab="participants">Participants</button>
+        <button class="nav-link" type="button" data-tab="timetable">Timetable</button>
+        <button class="nav-link" type="button" data-tab="accommodation">Accommodation</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section id="home" class="tab-panel active" aria-labelledby="home-title">
+      <div class="hero">
+        <div class="hero-text">
+          <p class="eyebrow">Wrocław · 16–18 September 2026</p>
+          <h1 id="home-title">NuWro Workshop</h1>
+          <p class="lead">
+            Although the workshop bears the NuWro name, its scope will be broader, focusing on general aspects of modeling neutrino interactions.
+          </p>
+          <p>
+            The reference to NuWro in the title reflects a broader goal of the neutrino interaction community: the development of improved models suitable for implementation in Monte Carlo generators, thereby supporting the success of current and future neutrino oscillation experiments.
+          </p>
+          <p>
+            At the same time, the workshop will provide an excellent opportunity to present recent efforts to enhance the quality of the physics models implemented in NuWro.
+          </p>
+
+          <dl class="event-details">
+            <div>
+              <dt>Co-chairs</dt>
+              <dd>Natalie Jachowicz, Xianguo Lu, Jan Sobczyk</dd>
+            </div>
+            <div>
+              <dt>Contact</dt>
+              <dd><a href="mailto:jan.sobczyk@uwr.edu.pl">jan.sobczyk@uwr.edu.pl</a></dd>
+            </div>
+          </dl>
+        </div>
+
+        <figure class="poster-card">
+          <img src="assets/NW_poster_final.png" alt="NuWro Workshop poster showing a blacksmith forging the NuWro logo">
+        </figure>
+      </div>
+    </section>
+
+    <section id="venue" class="tab-panel" aria-labelledby="venue-title" hidden>
+      <div class="content-card">
+        <p class="eyebrow">Workshop location</p>
+        <h2 id="venue-title">Venue</h2>
+        <p>
+          Faculty of Physics and Astronomy<br>
+          University of Wrocław<br>
+          plac Maxa Borna 9, Wrocław<br>
+          Room 422
+        </p>
+        <p>
+          <a class="button-link" href="https://www.google.com/maps/search/?api=1&query=Faculty+of+Physics+and+Astronomy+University+of+Wroclaw+plac+Maxa+Borna+9+Wroclaw" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+        </p>
+      </div>
+    </section>
+
+    <section id="participants" class="tab-panel" aria-labelledby="participants-title" hidden>
+      <div class="content-card">
+        <p class="eyebrow">As of 23 July 2026</p>
+        <h2 id="participants-title">Participants</h2>
+        <div class="participant-grid">
+          <p><strong>Luis Bonilla</strong><span>Wrocław</span></p>
+          <p><strong>Paloma Casale</strong><span>Granada</span></p>
+          <p><strong>Rwik Dharmapal Banerjee</strong><span>Wrocław</span></p>
+          <p><strong>Mathias El Baz</strong><span>Geneva</span></p>
+          <p><strong>Raul Gonzalez-Jimenez</strong><span>Seville</span></p>
+          <p><strong>Krzysztof Graczyk</strong><span>Wrocław</span></p>
+          <p><strong>Cezary Juszczak</strong><span>Wrocław</span></p>
+          <p><strong>Natalie Jachowicz</strong><span>Ghent</span></p>
+          <p><strong>Beata Kowal</strong><span>Wrocław</span></p>
+          <p><strong>Xianguo Lu</strong><span>Warwick</span></p>
+          <p><strong>Kajetan Niewczas</strong><span>Paris</span></p>
+          <p><strong>Alexis Nikolakopoulos</strong><span>Seattle</span></p>
+          <p><strong>Hemant Prasad</strong><span>Wrocław</span></p>
+          <p><strong>Federico Sanchez</strong><span>Geneva</span></p>
+          <p><strong>Jan Sobczyk</strong><span>Wrocław</span></p>
+          <p><strong>Joanna Sobczyk</strong><span>Goeteborg</span></p>
+          <p><strong>Cesar Jesus Valls</strong><span>Geneva</span></p>
+          <p><strong>Clarence Wret</strong><span>London</span></p>
+          <p><strong>Qiyu Yan</strong><span>Beijing</span></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="timetable" class="tab-panel" aria-labelledby="timetable-title" hidden>
+      <div class="content-card">
+        <p class="eyebrow">Preliminary programme</p>
+        <h2 id="timetable-title">Tentative timetable</h2>
+        <p>The current workshop programme is available as a PDF.</p>
+        <p>
+          <a class="button-link" href="assets/NuWro_Workshop_Timetable_Merged.pdf" target="_blank" rel="noopener noreferrer">Open timetable (PDF)</a>
+        </p>
+        <object class="pdf-preview" data="assets/NuWro_Workshop_Timetable_Merged.pdf" type="application/pdf">
+          <p>Your browser cannot display the PDF preview. <a href="assets/NuWro_Workshop_Timetable_Merged.pdf">Open the timetable here.</a></p>
+        </object>
+      </div>
+    </section>
+
+    <section id="accommodation" class="tab-panel" aria-labelledby="accommodation-title" hidden>
+      <div class="content-card">
+        <p class="eyebrow">For invited participants</p>
+        <h2 id="accommodation-title">Accommodation</h2>
+        <p>
+          Invited participants will be accommodated at the Art Hotel,<br>
+          Kiełbaśnicza 20, 50-110 Wrocław.
+        </p>
+        <p>
+          <a class="button-link" href="https://www.google.com/maps/search/?api=1&query=Art+Hotel+Kielbasnicza+20+Wroclaw" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>NuWro Workshop · Wrocław · 16–18 September 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
