@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="NuWro Workshop, Wrocław, 16–18 September 2026">
+  <title>NuWro Workshop 2026</title>
+  <style>
+    :root {
+      --ink: #20252b;
+      --muted: #66707a;
+      --line: #d9dee3;
+      --paper: #ffffff;
+      --soft: #f5f7f8;
+      --accent: #7a2e24;
+      --max: 1040px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); }
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 18px 24px 14px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.8rem, 4vw, 2.65rem);
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+
+    .brand p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: .98rem;
+    }
+
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      flex-wrap: nowrap;
+      gap: 4px;
+    }
+
+    .tab-button {
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      padding: 8px 10px;
+      cursor: pointer;
+      font-size: .95rem;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-button:hover,
+    .tab-button:focus-visible,
+    .tab-button.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+      outline: none;
+    }
+
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 46px 24px 70px;
+    }
+
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .home-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .86fr);
+      gap: 48px;
+      align-items: start;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .78rem;
+      font-weight: 700;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(1.7rem, 3vw, 2.25rem);
+      font-weight: 600;
+    }
+
+    h3 {
+      margin-top: 28px;
+      font-size: 1.05rem;
+    }
+
+    .lead {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 1.13rem;
+      line-height: 1.72;
+    }
+
+    .meta {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 12px;
+    }
+
+    .meta-row {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      gap: 16px;
+    }
+
+    .meta-label {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .poster {
+      margin: 0;
+      border: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    .poster img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .poster figcaption {
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    .content-card {
+      max-width: 780px;
+      padding: 30px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .map-link,
+    .document-link {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 9px 13px;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .93rem;
+    }
+
+    .map-link:hover,
+    .document-link:hover {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .participants {
+      columns: 2;
+      column-gap: 56px;
+      margin: 0;
+      padding-left: 1.25rem;
+    }
+
+    .participants li {
+      break-inside: avoid;
+      margin-bottom: 7px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      text-align: center;
+      font-size: .88rem;
+      padding: 22px 24px 28px;
+    }
+
+    @media (max-width: 860px) {
+      .header-inner {
+        display: block;
+      }
+      .tabs {
+        justify-content: flex-start;
+        margin-top: 12px;
+      }
+      .home-grid {
+        grid-template-columns: 1fr;
+      }
+      .poster {
+        max-width: 680px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      main { padding-top: 30px; }
+      .header-inner { padding: 14px 16px 10px; }
+      .tabs { gap: 0; }
+      .tab-button { padding: 7px 8px; font-size: .88rem; }
+      .content-card { padding: 22px; }
+      .participants { columns: 1; }
+      .meta-row { grid-template-columns: 1fr; gap: 2px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="brand">
+        <h1>NuWro Workshop</h1>
+        <p>Wrocław · 16–18 September 2026</p>
+      </div>
+
+      <nav class="tabs" aria-label="Workshop sections">
+        <button class="tab-button active" data-panel="home">Home</button>
+        <button class="tab-button" data-panel="venue">Venue</button>
+        <button class="tab-button" data-panel="participants">Participants</button>
+        <button class="tab-button" data-panel="registration">Registration</button>
+        <button class="tab-button" data-panel="timetable">Timetable</button>
+        <button class="tab-button" data-panel="accommodation">Accommodation</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="panel active" aria-labelledby="home-title">
+      <div class="home-grid">
+        <div>
+          <p class="eyebrow">Scientific workshop</p>
+          <h2 id="home-title">NuWro Workshop</h2>
+          <p class="lead">Although the workshop bears the NuWro name, its scope will be broader, focusing on general aspects of modeling neutrino interactions. The reference to NuWro in the title reflects a broader goal of the neutrino interaction community: the development of improved models suitable for implementation in Monte Carlo generators, thereby supporting the success of current and future neutrino oscillation experiments. At the same time, the workshop will provide an excellent opportunity to present recent efforts to enhance the quality of the physics models implemented in NuWro.</p>
+
+          <div class="meta">
+            <div class="meta-row">
+              <div class="meta-label">Date</div>
+              <div>Wrocław, 16–18 September 2026</div>
+            </div>
+            <div class="meta-row">
+              <div class="meta-label">Co-chairs</div>
+              <div>Natalie Jachowicz, Xianguo Lu, Jan Sobczyk</div>
+            </div>
+            <div class="meta-row">
+              <div class="meta-label">Contact</div>
+              <div><a href="mailto:jan.sobczyk@uwr.edu.pl">jan.sobczyk@uwr.edu.pl</a></div>
+            </div>
+          </div>
+        </div>
+
+        <figure class="poster">
+          <img src="assets/NW_poster_final.png" alt="NuWro Workshop poster">
+          <figcaption>NuWro Workshop · Wrocław, 16–18 September 2026</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="venue" class="panel" aria-labelledby="venue-title">
+      <div class="content-card">
+        <p class="eyebrow">Venue</p>
+        <h2 id="venue-title">Workshop location</h2>
+        <p><strong>Faculty of Physics and Astronomy, University of Wrocław</strong><br>
+        plac Maxa Borna 9, Wrocław<br>
+        Room 422</p>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Faculty+of+Physics+and+Astronomy+University+of+Wroclaw+plac+Maxa+Borna+9+Wroclaw" target="_blank" rel="noopener">Open in Google Maps</a>
+      </div>
+    </section>
+
+    <section id="participants" class="panel" aria-labelledby="participants-title">
+      <div class="content-card">
+        <p class="eyebrow">Participants</p>
+        <h2 id="participants-title">Participants as of 3 August 2026</h2>
+        <ul class="participants">
+          <li>Luis Bonilla (Wrocław)</li>
+          <li>Paloma Casale (Granada)</li>
+          <li>Rwik Dharmapal Banerjee (Wrocław)</li>
+          <li>Mathias El Baz (Geneva)</li>
+          <li>Raul Gonzalez-Jimenez (Seville)</li>
+          <li>Krzysztof Graczyk (Wrocław)</li>
+          <li>Cezary Juszczak (Wrocław)</li>
+          <li>Natalie Jachowicz (Ghent)</li>
+          <li>Beata Kowal (Wrocław)</li>
+          <li>Xianguo Lu (Warwick)</li>
+          <li>Sal Makaruś (Wrocław)</li>
+          <li>Kajetan Niewczas (Paris)</li>
+          <li>Alexis Nikolakopoulos (Seattle)</li>
+          <li>Hemant Prasad (Wrocław)</li>
+          <li>Federico Sanchez (Geneva)</li>
+          <li>Jan Sobczyk (Wrocław)</li>
+          <li>Joanna Sobczyk (Goeteborg)</li>
+          <li>Cesar Jesus Valls (Geneva)</li>
+          <li>Clarence Wret (London)</li>
+          <li>Qiyu Yan (Beijing)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="registration" class="panel" aria-labelledby="registration-title">
+      <div class="content-card">
+        <p class="eyebrow">Registration</p>
+        <h2 id="registration-title">Registration information</h2>
+        <p><strong>Registration deadline:</strong> 31 August 2026.</p>
+        <p>Requests should be sent to <a href="mailto:jan.sobczyk@uwr.edu.pl">jan.sobczyk@uwr.edu.pl</a>.</p>
+        <p>The conference fee for non-invited speakers is <strong>200 PLN</strong>, payable in cash at registration.</p>
+      </div>
+    </section>
+
+    <section id="timetable" class="panel" aria-labelledby="timetable-title">
+      <div class="content-card">
+        <p class="eyebrow">Timetable</p>
+        <h2 id="timetable-title">Tentative programme</h2>
+        <p>The tentative workshop timetable is available as a PDF document.</p>
+        <a class="document-link" href="assets/NuWro_Workshop_Timetable_Merged.pdf" target="_blank">Open tentative timetable (PDF)</a>
+      </div>
+    </section>
+
+    <section id="accommodation" class="panel" aria-labelledby="accommodation-title">
+      <div class="content-card">
+        <p class="eyebrow">Accommodation</p>
+        <h2 id="accommodation-title">Where to stay</h2>
+
+        <h3>Invited speakers</h3>
+        <p>Invited speakers will be accommodated at:</p>
+        <p><strong>Art Hotel</strong><br>
+        Kiełbaśnicza 20<br>
+        50-110 Wrocław</p>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Art+Hotel+Kielbasnicza+20+Wroclaw" target="_blank" rel="noopener">Art Hotel on Google Maps</a>
+
+        <h3>Other participants</h3>
+        <p>Non-invited participants should arrange accommodation on their own. The most convenient option, approximately 200 m from the workshop venue, is:</p>
+        <p><strong>Campanile Hotel Wrocław – Stare Miasto</strong><br>
+        Władysława Jagiełły 7<br>
+        50-201 Wrocław</p>
+        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Campanile+Hotel+Wroclaw+Stare+Miasto+Wladyslawa+Jagielly+7" target="_blank" rel="noopener">Campanile Hotel on Google Maps</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    NuWro Workshop · Wrocław · 16–18 September 2026
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.tab-button');
+    const panels = document.querySelectorAll('.panel');
+
+    function showPanel(id, updateHash = true) {
+      buttons.forEach(button => {
+        button.classList.toggle('active', button.dataset.panel === id);
+      });
+      panels.forEach(panel => {
+        panel.classList.toggle('active', panel.id === id);
+      });
+      if (updateHash) history.replaceState(null, '', '#' + id);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => showPanel(button.dataset.panel));
+    });
+
+    const initial = location.hash.replace('#', '');
+    if (initial && document.getElementById(initial)) showPanel(initial, false);
+  </script>
+</body>
+</html>
