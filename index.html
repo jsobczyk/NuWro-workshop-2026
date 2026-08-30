@@ -5,15 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="NuWro Workshop, Wrocław, 16–18 September 2026">
   <title>NuWro Workshop 2026</title>
+  <link rel="icon" type="image/svg+xml" href="assets/nuwro-w-mark.svg">
   <style>
     :root {
-      --ink: #20252b;
-      --muted: #66707a;
-      --line: #d9dee3;
+      --ink: #17233a;
+      --muted: #5c6b7a;
+      --line: #dde4ea;
       --paper: #ffffff;
-      --soft: #f5f7f8;
-      --accent: #7a2e24;
-      --max: 1040px;
+      --soft: #f4f7fa;
+      --accent: #225588;
+      --accent-dark: #001166;
+      --accent-soft: #ddeeff;
+      --nuwro-red: #ff2101;
+      --nuwro-gold: #ffc701;
+      --shadow: 0 1px 2px rgba(0,17,102,.06), 0 4px 14px rgba(0,17,102,.08);
+      --sidebar-w: 230px;
+      --max: 1180px;
     }
 
     * { box-sizing: border-box; }
@@ -22,366 +29,585 @@
 
     body {
       margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color: var(--ink);
-      background: var(--paper);
+      background: var(--soft);
       line-height: 1.6;
     }
 
     a { color: var(--accent); }
 
-    .site-header {
-      border-bottom: 1px solid var(--line);
-      background: rgba(255,255,255,.96);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+    /* Event banner, Indico-style */
+    .event-banner {
+      background: linear-gradient(120deg, var(--accent-dark), var(--accent));
+      color: #fff;
+      border-bottom: 3px solid transparent;
+      border-image: linear-gradient(90deg, var(--nuwro-red), #000, var(--nuwro-gold)) 1;
     }
 
-    .header-inner {
+    .event-banner-inner {
       max-width: var(--max);
       margin: 0 auto;
-      padding: 18px 24px 14px;
+      padding: 30px 24px;
+    }
+
+    .event-banner-title {
       display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      gap: 24px;
-    }
-
-    .brand h1 {
-      margin: 0;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(1.8rem, 4vw, 2.65rem);
-      font-weight: 600;
-      letter-spacing: .01em;
-    }
-
-    .brand p {
-      margin: 3px 0 0;
-      color: var(--muted);
-      font-size: .98rem;
-    }
-
-    .tabs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      flex-wrap: nowrap;
-      gap: 4px;
-    }
-
-    .tab-button {
-      border: 0;
-      background: transparent;
-      color: var(--ink);
-      padding: 8px 10px;
-      cursor: pointer;
-      font-size: .95rem;
-      border-bottom: 2px solid transparent;
-    }
-
-    .tab-button:hover,
-    .tab-button:focus-visible,
-    .tab-button.active {
-      color: var(--accent);
-      border-bottom-color: var(--accent);
-      outline: none;
-    }
-
-    main {
-      max-width: var(--max);
-      margin: 0 auto;
-      padding: 46px 24px 70px;
-    }
-
-    .panel { display: none; }
-    .panel.active { display: block; }
-
-    .home-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(320px, .86fr);
-      gap: 48px;
-      align-items: start;
-    }
-
-    .eyebrow {
-      margin: 0 0 8px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: .78rem;
-      font-weight: 700;
-    }
-
-    h2 {
-      margin: 0 0 18px;
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: clamp(1.7rem, 3vw, 2.25rem);
-      font-weight: 600;
-    }
-
-    h3 {
-      margin-top: 28px;
-      font-size: 1.05rem;
-    }
-
-    .lead {
-      font-family: Georgia, 'Times New Roman', serif;
-      font-size: 1.13rem;
-      line-height: 1.72;
-    }
-
-    .meta {
-      margin-top: 28px;
-      padding-top: 22px;
-      border-top: 1px solid var(--line);
-      display: grid;
-      gap: 12px;
-    }
-
-    .meta-row {
-      display: grid;
-      grid-template-columns: 105px 1fr;
+      align-items: center;
       gap: 16px;
     }
 
-    .meta-label {
-      color: var(--muted);
+    .event-logo {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      background: #fff;
+      border-radius: 50%;
+      padding: 6px;
+    }
+
+    .event-logo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .event-kicker {
+      margin: 0 0 6px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: .75rem;
+      font-weight: 700;
+      color: rgba(255,255,255,.75);
+    }
+
+    .event-banner h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 3.6vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+
+    .event-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 22px;
+      margin-top: 14px;
+      font-size: .95rem;
+      color: rgba(255,255,255,.92);
+    }
+
+    .event-facts span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    /* Layout: sidebar + content, like an Indico event page */
+    .event-layout {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 24px 70px;
+      display: grid;
+      grid-template-columns: var(--sidebar-w) minmax(0, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+
+    .event-sidebar {
+      position: sticky;
+      top: 20px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .event-sidebar ul {
+      list-style: none;
+      margin: 0;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .nav-button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      border: 0;
+      border-radius: 6px;
+      border-left: 3px solid transparent;
+      background: transparent;
+      color: var(--ink);
+      padding: 10px 12px;
+      font-size: .93rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+    }
+
+    .nav-button:hover,
+    .nav-button:focus-visible {
+      background: var(--soft);
+      color: var(--accent);
+      outline: none;
+    }
+
+    .nav-button.active {
+      background: var(--accent-soft);
+      border-left-color: var(--accent);
+      color: var(--accent-dark);
       font-weight: 700;
     }
 
-    .poster {
-      margin: 0;
+    .event-content { min-width: 0; }
+
+    .panel { display: none; }
+    .panel.active { display: block; animation: panel-in .25s ease; }
+
+    @keyframes panel-in {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .page-card {
+      background: var(--paper);
       border: 1px solid var(--line);
-      background: var(--soft);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 28px 32px;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-dark);
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 1.02rem;
+    }
+
+    .lead { font-size: 1rem; }
+
+    /* Overview page: description + Event Info box, Indico style */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 280px;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .event-info-box {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .event-info-box h3 {
+      margin: 0;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      padding: 10px 16px;
+      font-size: .85rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .event-info-box dl {
+      margin: 0;
+      padding: 4px 16px 8px;
+    }
+
+    .info-row {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .info-row:last-child { border-bottom: 0; }
+
+    .info-row dt {
+      margin: 0 0 2px;
+      color: var(--muted);
+      font-size: .74rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-weight: 700;
+    }
+
+    .info-row dd {
+      margin: 0;
+      font-size: .93rem;
+    }
+
+    .poster {
+      margin: 24px 0 0;
+      max-width: 420px;
     }
 
     .poster img {
       display: block;
       width: 100%;
       height: auto;
+      border-radius: 6px;
+      border: 1px solid var(--line);
     }
 
     .poster figcaption {
-      padding: 10px 12px;
+      padding: 8px 2px 0;
       color: var(--muted);
-      font-size: .85rem;
-    }
-
-    .content-card {
-      max-width: 780px;
-      padding: 30px;
-      border: 1px solid var(--line);
-      background: #fff;
+      font-size: .82rem;
     }
 
     .map-link,
     .document-link {
       display: inline-block;
       margin-top: 10px;
-      padding: 9px 13px;
-      border: 1px solid var(--ink);
-      color: var(--ink);
+      padding: 8px 14px;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      color: var(--accent);
       text-decoration: none;
-      font-weight: 700;
-      font-size: .93rem;
+      font-weight: 600;
+      font-size: .9rem;
+      transition: background-color .15s ease, color .15s ease;
     }
 
     .map-link:hover,
     .document-link:hover {
-      background: var(--ink);
+      background: var(--accent);
       color: #fff;
     }
 
-    .participants {
-      columns: 2;
-      column-gap: 56px;
-      margin: 0;
-      padding-left: 1.25rem;
+    /* Participant List, Indico-style data table */
+    .list-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
     }
 
-    .participants li {
-      break-inside: avoid;
-      margin-bottom: 7px;
+    .list-toolbar input[type="search"] {
+      flex: 0 1 280px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-size: .9rem;
+      font-family: inherit;
+    }
+
+    .list-toolbar input[type="search"]:focus {
+      outline: 2px solid var(--accent-soft);
+      border-color: var(--accent);
+    }
+
+    .list-count {
+      color: var(--muted);
+      font-size: .85rem;
+      white-space: nowrap;
+    }
+
+    .participant-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .93rem;
+    }
+
+    .participant-table th {
+      text-align: left;
+      background: var(--soft);
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      font-size: .72rem;
+      font-weight: 700;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .participant-table td {
+      padding: 9px 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .participant-table tbody tr:hover {
+      background: var(--accent-soft);
+    }
+
+    .participant-table td.num {
+      color: var(--muted);
+      width: 40px;
+    }
+
+    /* Registration */
+    .reg-list {
+      margin: 0 0 18px;
+      padding-left: 1.1rem;
+    }
+
+    .reg-list li { margin-bottom: 8px; }
+
+    .bank-details {
+      margin: 0;
+      padding: 16px 18px;
+      background: var(--soft);
+      border-radius: 6px;
+      font-size: .93rem;
+      line-height: 1.7;
+    }
+
+    /* Accommodation */
+    .accommodation-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .accommodation-grid .sub-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
     }
 
     footer {
       border-top: 1px solid var(--line);
       color: var(--muted);
       text-align: center;
-      font-size: .88rem;
-      padding: 22px 24px 28px;
+      font-size: .85rem;
+      padding: 22px 24px 30px;
     }
 
-    @media (max-width: 860px) {
-      .header-inner {
-        display: block;
-      }
-      .tabs {
-        justify-content: flex-start;
-        margin-top: 12px;
-      }
-      .home-grid {
+    @media (max-width: 900px) {
+      .event-layout {
         grid-template-columns: 1fr;
       }
-      .poster {
-        max-width: 680px;
+      .event-sidebar {
+        position: static;
+      }
+      .event-sidebar ul {
+        flex-direction: row;
+        overflow-x: auto;
+      }
+      .nav-button {
+        white-space: nowrap;
+        border-left: 0;
+        border-bottom: 3px solid transparent;
+      }
+      .nav-button.active {
+        border-bottom-color: var(--accent);
+      }
+      .overview-grid {
+        grid-template-columns: 1fr;
+      }
+      .accommodation-grid {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 600px) {
-      main { padding-top: 30px; }
-      .header-inner { padding: 14px 16px 10px; }
-      .tabs { gap: 0; }
-      .tab-button { padding: 7px 8px; font-size: .88rem; }
-      .content-card { padding: 22px; }
-      .participants { columns: 1; }
-      .meta-row { grid-template-columns: 1fr; gap: 2px; }
+      .event-layout { padding: 20px 16px 50px; }
+      .page-card { padding: 20px; }
+      .list-toolbar { flex-direction: column; align-items: stretch; }
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="brand">
-        <h1>NuWro Workshop</h1>
-        <p>Wrocław · 16–18 September 2026</p>
+  <header class="event-banner">
+    <div class="event-banner-inner">
+      <div class="event-banner-title">
+        <a class="event-logo" href="https://github.com/NuWro/nuwro" target="_blank" rel="noopener" title="NuWro Monte Carlo neutrino event generator">
+          <img src="assets/nuwro-w-mark.svg" alt="NuWro logo">
+        </a>
+        <div>
+          <p class="event-kicker">Scientific workshop</p>
+          <h1>NuWro Workshop</h1>
+        </div>
       </div>
-
-      <nav class="tabs" aria-label="Workshop sections">
-        <button class="tab-button active" data-panel="home">Home</button>
-        <button class="tab-button" data-panel="venue">Venue</button>
-        <button class="tab-button" data-panel="participants">Participants</button>
-        <button class="tab-button" data-panel="registration">Registration</button>
-        <button class="tab-button" data-panel="timetable">Timetable</button>
-        <button class="tab-button" data-panel="accommodation">Accommodation</button>
-      </nav>
+      <div class="event-facts">
+        <span>📅 16–18 September 2026</span>
+        <span>📍 Wrocław, Poland</span>
+      </div>
     </div>
   </header>
 
-  <main>
-    <section id="home" class="panel active" aria-labelledby="home-title">
-      <div class="home-grid">
-        <div>
-          <p class="eyebrow">Scientific workshop</p>
-          <h2 id="home-title">NuWro Workshop</h2>
-          <p class="lead">Although the workshop bears the NuWro name, its scope will be broader, focusing on general aspects of modeling neutrino interactions. The reference to NuWro in the title reflects a broader goal of the neutrino interaction community: the development of improved models suitable for implementation in Monte Carlo generators, thereby supporting the success of current and future neutrino oscillation experiments. At the same time, the workshop will provide an excellent opportunity to present recent efforts to enhance the quality of the physics models implemented in NuWro.</p>
+  <div class="event-layout">
+    <nav class="event-sidebar" aria-label="Event navigation">
+      <ul>
+        <li><button class="nav-button active" data-panel="home">Overview</button></li>
+        <li><button class="nav-button" data-panel="venue">Venue</button></li>
+        <li><button class="nav-button" data-panel="participants">Participant List</button></li>
+        <li><button class="nav-button" data-panel="registration">Registration</button></li>
+        <li><button class="nav-button" data-panel="timetable">Timetable</button></li>
+        <li><button class="nav-button" data-panel="accommodation">Accommodation</button></li>
+      </ul>
+    </nav>
 
-          <div class="meta">
-            <div class="meta-row">
-              <div class="meta-label">Date</div>
-              <div>Wrocław, 16–18 September 2026</div>
+    <main class="event-content">
+      <section id="home" class="panel active" aria-labelledby="home-title">
+        <div class="page-card">
+          <h2 id="home-title">Overview</h2>
+          <div class="overview-grid">
+            <div>
+              <p class="lead">Although the workshop bears the NuWro name, its scope will be broader, focusing on general aspects of modeling neutrino interactions. The reference to NuWro in the title reflects a broader goal of the neutrino interaction community: the development of improved models suitable for implementation in Monte Carlo generators, thereby supporting the success of current and future neutrino oscillation experiments. At the same time, the workshop will provide an excellent opportunity to present recent efforts to enhance the quality of the physics models implemented in NuWro.</p>
+
+              <figure class="poster">
+                <img src="assets/NW_poster_final.png" alt="NuWro Workshop poster">
+              </figure>
             </div>
-            <div class="meta-row">
-              <div class="meta-label">Co-chairs</div>
-              <div>Natalie Jachowicz, Xianguo Lu, Jan Sobczyk</div>
+
+            <aside class="event-info-box">
+              <h3>Event info</h3>
+              <dl>
+                <div class="info-row">
+                  <dt>Starts</dt>
+                  <dd>Wed, 16 Sep 2026</dd>
+                </div>
+                <div class="info-row">
+                  <dt>Ends</dt>
+                  <dd>Fri, 18 Sep 2026</dd>
+                </div>
+                <div class="info-row">
+                  <dt>Location</dt>
+                  <dd>Wrocław, Poland</dd>
+                </div>
+                <div class="info-row">
+                  <dt>Chairs</dt>
+                  <dd>Natalie Jachowicz, Xianguo Lu, Jan Sobczyk</dd>
+                </div>
+                <div class="info-row">
+                  <dt>Contact</dt>
+                  <dd><a href="mailto:jan.sobczyk@uwr.edu.pl">jan.sobczyk@uwr.edu.pl</a></dd>
+                </div>
+              </dl>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section id="venue" class="panel" aria-labelledby="venue-title">
+        <div class="page-card">
+          <h2 id="venue-title">Venue</h2>
+          <p><strong>Faculty of Physics and Astronomy, University of Wrocław</strong><br>
+          plac Maxa Borna 9, Wrocław<br>
+          Room 422</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Faculty+of+Physics+and+Astronomy+University+of+Wroclaw+plac+Maxa+Borna+9+Wroclaw" target="_blank" rel="noopener">Open in Google Maps</a>
+        </div>
+      </section>
+
+      <section id="participants" class="panel" aria-labelledby="participants-title">
+        <div class="page-card">
+          <h2 id="participants-title">Participant List</h2>
+          <div class="list-toolbar">
+            <input type="search" id="participant-search" placeholder="Search participants…" aria-label="Search participants">
+            <span class="list-count" id="participant-count"></span>
+          </div>
+          <table class="participant-table" id="participant-table">
+            <thead>
+              <tr>
+                <th class="num">#</th>
+                <th>Name</th>
+                <th>Affiliation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="num">1</td><td>Seisho Abe</td><td>Wako</td></tr>
+              <tr><td class="num">2</td><td>Luis Bonilla</td><td>Wrocław</td></tr>
+              <tr><td class="num">3</td><td>Paloma Casale</td><td>Granada</td></tr>
+              <tr><td class="num">4</td><td>Alma Cavallin</td><td>Goeteborg</td></tr>
+              <tr><td class="num">5</td><td>Rwik Dharmapal Banerjee</td><td>Wrocław</td></tr>
+              <tr><td class="num">6</td><td>Mathias El Baz</td><td>Geneva</td></tr>
+              <tr><td class="num">7</td><td>Raul Gonzalez-Jimenez</td><td>Seville</td></tr>
+              <tr><td class="num">8</td><td>Krzysztof Graczyk</td><td>Wrocław</td></tr>
+              <tr><td class="num">9</td><td>Cezary Juszczak</td><td>Wrocław</td></tr>
+              <tr><td class="num">10</td><td>Natalie Jachowicz</td><td>Ghent</td></tr>
+              <tr><td class="num">11</td><td>Beata Kowal</td><td>Wrocław</td></tr>
+              <tr><td class="num">12</td><td>Xianguo Lu</td><td>Warwick</td></tr>
+              <tr><td class="num">13</td><td>Sal Makaruś</td><td>Wrocław</td></tr>
+              <tr><td class="num">14</td><td>Kajetan Niewczas</td><td>Paris</td></tr>
+              <tr><td class="num">15</td><td>Alexis Nikolakopoulos</td><td>Seattle</td></tr>
+              <tr><td class="num">16</td><td>Hemant Prasad</td><td>Wrocław</td></tr>
+              <tr><td class="num">17</td><td>Federico Sanchez</td><td>Geneva</td></tr>
+              <tr><td class="num">18</td><td>Jan Sobczyk</td><td>Wrocław</td></tr>
+              <tr><td class="num">19</td><td>Joanna Sobczyk</td><td>Goeteborg</td></tr>
+              <tr><td class="num">20</td><td>Alexandra Trettin</td><td>Munich</td></tr>
+              <tr><td class="num">21</td><td>Cesar Jesus Valls</td><td>Geneva</td></tr>
+              <tr><td class="num">22</td><td>Clarence Wret</td><td>London</td></tr>
+              <tr><td class="num">23</td><td>Qiyu Yan</td><td>Beijing</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:14px; color:var(--muted); font-size:.82rem;">Participants as of 30 August 2026.</p>
+        </div>
+      </section>
+
+      <section id="registration" class="panel" aria-labelledby="registration-title">
+        <div class="page-card">
+          <h2 id="registration-title">Registration</h2>
+          <ul class="reg-list">
+            <li><strong>Registration deadline:</strong> 31 August 2026.</li>
+            <li>The number of participants is restricted to 25.</li>
+            <li>Requests should be sent to <a href="mailto:jan.sobczyk@uwr.edu.pl">jan.sobczyk@uwr.edu.pl</a>.</li>
+            <li>The conference fee for non-invited speakers is <strong>200 PLN or 50 EUR</strong>, paid by bank transfer.</li>
+          </ul>
+          <div class="bank-details">
+            <div class="info-row"><dt style="color:var(--muted); font-weight:700; font-size:.8rem; text-transform:uppercase;">PLN account</dt><dd style="margin:2px 0 0;">58 1090 2503 0000 0001 1434 9402</dd></div>
+            <div class="info-row"><dt style="color:var(--muted); font-weight:700; font-size:.8rem; text-transform:uppercase;">EUR account</dt><dd style="margin:2px 0 0;">13 1090 2398 0000 0001 1435 7013</dd></div>
+            <div class="info-row"><dt style="color:var(--muted); font-weight:700; font-size:.8rem; text-transform:uppercase;">SWIFT</dt><dd style="margin:2px 0 0;">WBKPPLPP</dd></div>
+            <div class="info-row"><dt style="color:var(--muted); font-weight:700; font-size:.8rem; text-transform:uppercase;">Bank</dt><dd style="margin:2px 0 0;">Erste Bank Polska SA, 50-950 Wrocław, Rynek 9/11</dd></div>
+            <div class="info-row" style="border-bottom:0;"><dt style="color:var(--muted); font-weight:700; font-size:.8rem; text-transform:uppercase;">Reference</dt><dd style="margin:2px 0 0;">NuWro Workshop 2026 – First Name Last Name</dd></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="timetable" class="panel" aria-labelledby="timetable-title">
+        <div class="page-card">
+          <h2 id="timetable-title">Timetable</h2>
+          <p>The tentative workshop timetable is available as a PDF document.</p>
+          <a class="document-link" href="assets/NuWro_Workshop_Timetable_Merged.pdf" target="_blank">Open tentative timetable (PDF)</a>
+        </div>
+      </section>
+
+      <section id="accommodation" class="panel" aria-labelledby="accommodation-title">
+        <div class="page-card">
+          <h2 id="accommodation-title">Accommodation</h2>
+          <div class="accommodation-grid">
+            <div class="sub-card">
+              <h3>Invited speakers</h3>
+              <p>Invited speakers will be accommodated at:</p>
+              <p><strong>Art Hotel</strong><br>
+              Kiełbaśnicza 20<br>
+              50-110 Wrocław</p>
+              <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Art+Hotel+Kielbasnicza+20+Wroclaw" target="_blank" rel="noopener">Art Hotel on Google Maps</a>
             </div>
-            <div class="meta-row">
-              <div class="meta-label">Contact</div>
-              <div><a href="mailto:jan.sobczyk@uwr.edu.pl">jan.sobczyk@uwr.edu.pl</a></div>
+
+            <div class="sub-card">
+              <h3>Other participants</h3>
+              <p>Non-invited participants should arrange accommodation on their own. The most convenient option, approximately 200 m from the workshop venue, is:</p>
+              <p><strong>Campanile Hotel Wrocław – Stare Miasto</strong><br>
+              Władysława Jagiełły 7<br>
+              50-201 Wrocław</p>
+              <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Campanile+Hotel+Wroclaw+Stare+Miasto+Wladyslawa+Jagielly+7" target="_blank" rel="noopener">Campanile Hotel on Google Maps</a>
             </div>
           </div>
         </div>
-
-        <figure class="poster">
-          <img src="assets/NW_poster_final.png" alt="NuWro Workshop poster">
-        </figure>
-      </div>
-    </section>
-
-    <section id="venue" class="panel" aria-labelledby="venue-title">
-      <div class="content-card">
-        <p class="eyebrow">Venue</p>
-        <h2 id="venue-title">Workshop location</h2>
-        <p><strong>Faculty of Physics and Astronomy, University of Wrocław</strong><br>
-        plac Maxa Borna 9, Wrocław<br>
-        Room 422</p>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Faculty+of+Physics+and+Astronomy+University+of+Wroclaw+plac+Maxa+Borna+9+Wroclaw" target="_blank" rel="noopener">Open in Google Maps</a>
-      </div>
-    </section>
-
-    <section id="participants" class="panel" aria-labelledby="participants-title">
-      <div class="content-card">
-        <p class="eyebrow">Participants</p>
-        <h2 id="participants-title">Participants as of 30 August 2026</h2>
-        <ul class="participants">
-          <li>Seisho Abe (Wako)</li>
-          <li>Luis Bonilla (Wrocław)</li>
-          <li>Paloma Casale (Granada)</li>
-          <li>Alma Cavallin (Goeteborg)</li>
-          <li>Rwik Dharmapal Banerjee (Wrocław)</li>
-          <li>Mathias El Baz (Geneva)</li>
-          <li>Raul Gonzalez-Jimenez (Seville)</li>
-          <li>Krzysztof Graczyk (Wrocław)</li>
-          <li>Cezary Juszczak (Wrocław)</li>
-          <li>Natalie Jachowicz (Ghent)</li>
-          <li>Beata Kowal (Wrocław)</li>
-          <li>Xianguo Lu (Warwick)</li>
-          <li>Sal Makaruś (Wrocław)</li>
-          <li>Kajetan Niewczas (Paris)</li>
-          <li>Alexis Nikolakopoulos (Seattle)</li>
-          <li>Hemant Prasad (Wrocław)</li>
-          <li>Federico Sanchez (Geneva)</li>
-          <li>Jan Sobczyk (Wrocław)</li>
-          <li>Joanna Sobczyk (Goeteborg)</li>
-          <li>Alexandra Trettin (Munich)</li>
-          <li>Cesar Jesus Valls (Geneva)</li>
-          <li>Clarence Wret (London)</li>
-          <li>Qiyu Yan (Beijing)</li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="registration" class="panel" aria-labelledby="registration-title">
-      <div class="content-card">
-        <p class="eyebrow">Registration</p>
-        <h2 id="registration-title">Registration information</h2>
-        <p><strong>Registration deadline:</strong> 31 August 2026.</p>
-        <p>A number of participants is restricted to 30.</p>
-        <p>Requests should be sent to <a href="mailto:jan.sobczyk@uwr.edu.pl">jan.sobczyk@uwr.edu.pl</a>.</p>
-        <p>The conference fee for non-invited speakers is <strong>200 PLN or 50 EUR</strong> and should be paid by banking transfer.</p>
-        <p>The account number is 58 1090 2503 0000 0001 1434 9402 for PLN and 13 1090 2398 0000 0001 1435 7013 for EUR, SWIFT: WBKPPLPP, Erste Bank Polska SA, 50-950 Wrocław, Rynek 9/11.  </p>
-        <p>Please use the following payment reference: NuWro Workshop 2026 – First Name Last Name</p>
-      </div>
-    </section>
-
-    <section id="timetable" class="panel" aria-labelledby="timetable-title">
-      <div class="content-card">
-        <p class="eyebrow">Timetable</p>
-        <h2 id="timetable-title">Tentative programme</h2>
-        <p>The tentative workshop timetable is available as a PDF document.</p>
-        <a class="document-link" href="assets/NuWro_Workshop_Timetable_Merged.pdf" target="_blank">Open tentative timetable (PDF)</a>
-      </div>
-    </section>
-
-    <section id="accommodation" class="panel" aria-labelledby="accommodation-title">
-      <div class="content-card">
-        <p class="eyebrow">Accommodation</p>
-        <h2 id="accommodation-title">Where to stay</h2>
-
-        <h3>Invited speakers</h3>
-        <p>Invited speakers will be accommodated at:</p>
-        <p><strong>Art Hotel</strong><br>
-        Kiełbaśnicza 20<br>
-        50-110 Wrocław</p>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Art+Hotel+Kielbasnicza+20+Wroclaw" target="_blank" rel="noopener">Art Hotel on Google Maps</a>
-
-        <h3>Other participants</h3>
-        <p>Non-invited participants should arrange accommodation on their own. The most convenient option, approximately 200 m from the workshop venue, is:</p>
-        <p><strong>Campanile Hotel Wrocław – Stare Miasto</strong><br>
-        Władysława Jagiełły 7<br>
-        50-201 Wrocław</p>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Campanile+Hotel+Wroclaw+Stare+Miasto+Wladyslawa+Jagielly+7" target="_blank" rel="noopener">Campanile Hotel on Google Maps</a>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
+  </div>
 
   <footer>
-    NuWro Workshop · Wrocław · 16–18 September 2026
+    NuWro Workshop · Wrocław · 16–18 September 2026<br>
+    Named after and organized in support of the <a href="https://github.com/NuWro/nuwro" target="_blank" rel="noopener">NuWro</a> Monte Carlo neutrino event generator project
   </footer>
 
   <script>
-    const buttons = document.querySelectorAll('.tab-button');
+    const buttons = document.querySelectorAll('.nav-button');
     const panels = document.querySelectorAll('.panel');
 
     function showPanel(id, updateHash = true) {
@@ -401,6 +627,27 @@
 
     const initial = location.hash.replace('#', '');
     if (initial && document.getElementById(initial)) showPanel(initial, false);
+
+    const searchInput = document.getElementById('participant-search');
+    const tableRows = Array.from(document.querySelectorAll('#participant-table tbody tr'));
+    const countLabel = document.getElementById('participant-count');
+
+    function updateCount(visible) {
+      countLabel.textContent = visible + (visible === 1 ? ' participant' : ' participants');
+    }
+
+    updateCount(tableRows.length);
+
+    searchInput.addEventListener('input', () => {
+      const q = searchInput.value.trim().toLowerCase();
+      let visible = 0;
+      tableRows.forEach(row => {
+        const match = row.textContent.toLowerCase().includes(q);
+        row.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+      updateCount(visible);
+    });
   </script>
 </body>
 </html>
