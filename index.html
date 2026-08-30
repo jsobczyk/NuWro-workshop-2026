@@ -5,18 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="NuWro Workshop, Wrocław, 16–18 September 2026">
   <title>NuWro Workshop 2026</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23eaf3fb' stroke='%231b5c94' stroke-width='1.5'/%3E%3Cg stroke='%231b5c94' stroke-width='2' stroke-linecap='round'%3E%3Cline x1='16' y1='16' x2='16' y2='5'/%3E%3Cline x1='16' y1='16' x2='25' y2='22'/%3E%3Cline x1='16' y1='16' x2='7' y2='22'/%3E%3C/g%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%231b5c94'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="assets/nuwro-w-mark.svg">
   <style>
     :root {
-      --ink: #21324c;
+      --ink: #17233a;
       --muted: #5c6b7a;
       --line: #dde4ea;
       --paper: #ffffff;
       --soft: #f4f7fa;
-      --accent: #1b5c94;
-      --accent-dark: #0f3c5f;
-      --accent-soft: #eaf3fb;
-      --shadow: 0 1px 2px rgba(15,60,95,.06), 0 4px 14px rgba(15,60,95,.08);
+      --accent: #225588;
+      --accent-dark: #001166;
+      --accent-soft: #ddeeff;
+      --nuwro-red: #ff2101;
+      --nuwro-gold: #ffc701;
+      --shadow: 0 1px 2px rgba(0,17,102,.06), 0 4px 14px rgba(0,17,102,.08);
       --sidebar-w: 230px;
       --max: 1180px;
     }
@@ -39,12 +41,35 @@
     .event-banner {
       background: linear-gradient(120deg, var(--accent-dark), var(--accent));
       color: #fff;
+      border-bottom: 3px solid transparent;
+      border-image: linear-gradient(90deg, var(--nuwro-red), #000, var(--nuwro-gold)) 1;
     }
 
     .event-banner-inner {
       max-width: var(--max);
       margin: 0 auto;
       padding: 30px 24px;
+    }
+
+    .event-banner-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .event-logo {
+      width: 56px;
+      height: 56px;
+      flex-shrink: 0;
+      background: #fff;
+      border-radius: 50%;
+      padding: 6px;
+    }
+
+    .event-logo img {
+      display: block;
+      width: 100%;
+      height: 100%;
     }
 
     .event-kicker {
@@ -67,6 +92,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px 22px;
+      margin-top: 14px;
       font-size: .95rem;
       color: rgba(255,255,255,.92);
     }
@@ -396,8 +422,15 @@
 <body>
   <header class="event-banner">
     <div class="event-banner-inner">
-      <p class="event-kicker">Scientific workshop</p>
-      <h1>NuWro Workshop</h1>
+      <div class="event-banner-title">
+        <a class="event-logo" href="https://github.com/NuWro/nuwro" target="_blank" rel="noopener" title="NuWro Monte Carlo neutrino event generator">
+          <img src="assets/nuwro-w-mark.svg" alt="NuWro logo">
+        </a>
+        <div>
+          <p class="event-kicker">Scientific workshop</p>
+          <h1>NuWro Workshop</h1>
+        </div>
+      </div>
       <div class="event-facts">
         <span>📅 16–18 September 2026</span>
         <span>📍 Wrocław, Poland</span>
@@ -519,7 +552,7 @@
           <h2 id="registration-title">Registration</h2>
           <ul class="reg-list">
             <li><strong>Registration deadline:</strong> 31 August 2026.</li>
-            <li>The number of participants is restricted to 30.</li>
+            <li>The number of participants is restricted to 25.</li>
             <li>Requests should be sent to <a href="mailto:jan.sobczyk@uwr.edu.pl">jan.sobczyk@uwr.edu.pl</a>.</li>
             <li>The conference fee for non-invited speakers is <strong>200 PLN or 50 EUR</strong>, paid by bank transfer.</li>
           </ul>
@@ -569,7 +602,8 @@
   </div>
 
   <footer>
-    NuWro Workshop · Wrocław · 16–18 September 2026
+    NuWro Workshop · Wrocław · 16–18 September 2026<br>
+    Named after and organized in support of the <a href="https://github.com/NuWro/nuwro" target="_blank" rel="noopener">NuWro</a> Monte Carlo neutrino event generator project
   </footer>
 
   <script>
