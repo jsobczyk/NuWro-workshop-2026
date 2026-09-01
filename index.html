@@ -286,6 +286,105 @@
       color: #fff;
     }
 
+    /* Timetable, Indico-style day agenda */
+    .day-tabs {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .day-tab {
+      border: 0;
+      background: transparent;
+      padding: 9px 16px;
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color .15s ease, border-color .15s ease;
+    }
+
+    .day-tab:hover,
+    .day-tab:focus-visible {
+      color: var(--accent);
+      outline: none;
+    }
+
+    .day-tab.active {
+      color: var(--accent-dark);
+      border-bottom-color: var(--accent);
+    }
+
+    .agenda {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .agenda-item {
+      display: flex;
+      gap: 18px;
+      padding: 11px 16px;
+      border-bottom: 1px solid var(--line);
+      border-left: 3px solid transparent;
+      font-size: .92rem;
+    }
+
+    .agenda-item:last-child { border-bottom: 0; }
+
+    .agenda-time {
+      flex: 0 0 96px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .agenda-item.talk {
+      background: var(--paper);
+      border-left-color: var(--accent);
+    }
+
+    .agenda-item.talk .agenda-title {
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .agenda-item.discussion {
+      background: var(--soft);
+      border-left-color: var(--nuwro-gold);
+    }
+
+    .agenda-item.discussion .agenda-title {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .agenda-item.discussion .agenda-title strong {
+      font-style: normal;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .agenda-item.break {
+      background: var(--soft);
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .agenda-item.social {
+      background: var(--accent-soft);
+      border-left-color: var(--nuwro-red);
+    }
+
+    .agenda-item.social .agenda-title {
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
     /* Participant List, Indico-style data table */
     .list-toolbar {
       display: flex;
@@ -520,7 +619,7 @@
             <tbody>
               <tr><td class="num">1</td><td>Seisho Abe</td><td>Wako</td></tr>
               <tr><td class="num">2</td><td>Luis Bonilla</td><td>Wrocław</td></tr>
-              <tr><td class="num">3</td><td>Paloma Casale</td><td>Granada</td></tr>
+              <tr><td class="num">3</td><td>Paloma Casalé</td><td>Granada</td></tr>
               <tr><td class="num">4</td><td>Alma Cavallin</td><td>Goeteborg</td></tr>
               <tr><td class="num">5</td><td>Rwik Dharmapal Banerjee</td><td>Wrocław</td></tr>
               <tr><td class="num">6</td><td>Mathias El Baz</td><td>Geneva</td></tr>
@@ -529,21 +628,22 @@
               <tr><td class="num">9</td><td>Cezary Juszczak</td><td>Wrocław</td></tr>
               <tr><td class="num">10</td><td>Natalie Jachowicz</td><td>Ghent</td></tr>
               <tr><td class="num">11</td><td>Beata Kowal</td><td>Wrocław</td></tr>
-              <tr><td class="num">12</td><td>Xianguo Lu</td><td>Warwick</td></tr>
-              <tr><td class="num">13</td><td>Sal Makaruś</td><td>Wrocław</td></tr>
-              <tr><td class="num">14</td><td>Kajetan Niewczas</td><td>Paris</td></tr>
-              <tr><td class="num">15</td><td>Alexis Nikolakopoulos</td><td>Seattle</td></tr>
-              <tr><td class="num">16</td><td>Hemant Prasad</td><td>Wrocław</td></tr>
-              <tr><td class="num">17</td><td>Federico Sanchez</td><td>Geneva</td></tr>
-              <tr><td class="num">18</td><td>Jan Sobczyk</td><td>Wrocław</td></tr>
-              <tr><td class="num">19</td><td>Joanna Sobczyk</td><td>Goeteborg</td></tr>
-              <tr><td class="num">20</td><td>Alexandra Trettin</td><td>Munich</td></tr>
-              <tr><td class="num">21</td><td>Cesar Jesus Valls</td><td>Geneva</td></tr>
-              <tr><td class="num">22</td><td>Clarence Wret</td><td>London</td></tr>
-              <tr><td class="num">23</td><td>Qiyu Yan</td><td>Beijing</td></tr>
+              <tr><td class="num">12</td><td>Katarzyna Kowalik</td><td>Warsaw</td></tr>
+              <tr><td class="num">13</td><td>Xianguo Lu</td><td>Warwick</td></tr>
+              <tr><td class="num">14</td><td>Sal Makaruś</td><td>Wrocław</td></tr>
+              <tr><td class="num">15</td><td>Kajetan Niewczas</td><td>Paris</td></tr>
+              <tr><td class="num">16</td><td>Alexis Nikolakopoulos</td><td>Seattle</td></tr>
+              <tr><td class="num">17</td><td>Hemant Prasad</td><td>Wrocław</td></tr>
+              <tr><td class="num">18</td><td>Federico Sanchez</td><td>Geneva</td></tr>
+              <tr><td class="num">19</td><td>Jan Sobczyk</td><td>Wrocław</td></tr>
+              <tr><td class="num">20</td><td>Joanna Sobczyk</td><td>Goeteborg</td></tr>
+              <tr><td class="num">21</td><td>Alexandra Trettin</td><td>Munich</td></tr>
+              <tr><td class="num">22</td><td>Cesar Jesus Valls</td><td>Geneva</td></tr>
+              <tr><td class="num">23</td><td>Clarence Wret</td><td>London</td></tr>
+              <tr><td class="num">24</td><td>Qiyu Yan</td><td>Beijing</td></tr>
             </tbody>
           </table>
-          <p style="margin-top:14px; color:var(--muted); font-size:.82rem;">Participants as of 30 August 2026.</p>
+          <p style="margin-top:14px; color:var(--muted); font-size:.82rem;">Participants as of 1 September 2026.</p>
         </div>
       </section>
 
@@ -569,8 +669,59 @@
       <section id="timetable" class="panel" aria-labelledby="timetable-title">
         <div class="page-card">
           <h2 id="timetable-title">Timetable</h2>
-          <p>The tentative workshop timetable is available as a PDF document.</p>
-          <a class="document-link" href="assets/NuWro_Workshop_Timetable_Merged.pdf" target="_blank">Open tentative timetable (PDF)</a>
+
+          <div class="day-tabs" role="tablist" aria-label="Workshop day">
+            <button class="day-tab active" data-day="wed" role="tab" aria-selected="true">Wed 16 Sep</button>
+            <button class="day-tab" data-day="thu" role="tab" aria-selected="false">Thu 17 Sep</button>
+            <button class="day-tab" data-day="fri" role="tab" aria-selected="false">Fri 18 Sep</button>
+          </div>
+
+          <ol class="agenda" data-day-panel="wed">
+            <li class="agenda-item talk"><span class="agenda-time">09:00–09:30</span><span class="agenda-title">Jan Sobczyk</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">09:30–10:20</span><span class="agenda-title">Kajetan Niewczas</span></li>
+            <li class="agenda-item break"><span class="agenda-time">10:20–10:50</span><span class="agenda-title">Coffee break</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">10:50–11:40</span><span class="agenda-title">Hemant Prasad</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">11:40–12:30</span><span class="agenda-title">Rwik Dharmapal Banerjee</span></li>
+            <li class="agenda-item discussion"><span class="agenda-time">12:30–13:00</span><span class="agenda-title">Discussion</span></li>
+            <li class="agenda-item break"><span class="agenda-time">13:00–14:30</span><span class="agenda-title">Lunch break</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">14:30–15:20</span><span class="agenda-title">Xianguo Lu</span></li>
+            <li class="agenda-item break"><span class="agenda-time">15:20–15:50</span><span class="agenda-title">Coffee break</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">15:50–16:40</span><span class="agenda-title">Natalie Jachowicz</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">16:40–17:00</span><span class="agenda-title">Alexandra Trettin</span></li>
+            <li class="agenda-item discussion"><span class="agenda-time">17:00–17:30</span><span class="agenda-title">Discussion</span></li>
+            <li class="agenda-item social"><span class="agenda-time">18:30</span><span class="agenda-title">Conference dinner</span></li>
+          </ol>
+
+          <ol class="agenda" data-day-panel="thu" hidden>
+            <li class="agenda-item talk"><span class="agenda-time">09:00–09:50</span><span class="agenda-title">Clarence Wret</span></li>
+            <li class="agenda-item break"><span class="agenda-time">09:50–10:20</span><span class="agenda-title">Coffee break</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">10:20–11:10</span><span class="agenda-title">Raul Gonzalez-Jimenez</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">11:10–12:00</span><span class="agenda-title">Joanna Sobczyk</span></li>
+            <li class="agenda-item discussion"><span class="agenda-time">12:00–12:30</span><span class="agenda-title">Discussion</span></li>
+            <li class="agenda-item break"><span class="agenda-time">12:30–14:00</span><span class="agenda-title">Lunch break</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">14:00–14:20</span><span class="agenda-title">Alma Cavallin</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">14:20–15:10</span><span class="agenda-title">Alexis Nikolakopoulos</span></li>
+            <li class="agenda-item break"><span class="agenda-time">15:10–15:40</span><span class="agenda-title">Coffee break</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">15:40–16:30</span><span class="agenda-title">Paloma Casalé</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">16:30–17:15</span><span class="agenda-title">Cesar Jesus Valls</span></li>
+            <li class="agenda-item discussion"><span class="agenda-time">17:15–17:45</span><span class="agenda-title">Discussion</span></li>
+          </ol>
+
+          <ol class="agenda" data-day-panel="fri" hidden>
+            <li class="agenda-item talk"><span class="agenda-time">09:00–09:50</span><span class="agenda-title">Mathias El Baz</span></li>
+            <li class="agenda-item break"><span class="agenda-time">09:50–10:20</span><span class="agenda-title">Coffee break</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">10:20–11:10</span><span class="agenda-title">Luis Bonilla</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">11:10–11:30</span><span class="agenda-title">Beata Kowal</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">11:30–12:00</span><span class="agenda-title">Krzysztof Graczyk</span></li>
+            <li class="agenda-item discussion"><span class="agenda-time">12:00–12:30</span><span class="agenda-title">Discussion</span></li>
+            <li class="agenda-item break"><span class="agenda-time">12:30–14:00</span><span class="agenda-title">Lunch break</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">14:00–14:30</span><span class="agenda-title">Cezary Juszczak</span></li>
+            <li class="agenda-item break"><span class="agenda-time">14:30–15:00</span><span class="agenda-title">Coffee break</span></li>
+            <li class="agenda-item talk"><span class="agenda-time">15:00–15:45</span><span class="agenda-title">Qiyu Yan</span></li>
+            <li class="agenda-item discussion"><span class="agenda-time">15:45–17:15</span><span class="agenda-title">Final discussion — <strong>Federico Sanchez</strong></span></li>
+          </ol>
+
+          <p style="margin-top:16px; color:var(--muted); font-size:.82rem;">Schedule tentative and subject to change.</p>
         </div>
       </section>
 
@@ -647,6 +798,21 @@
         if (match) visible++;
       });
       updateCount(visible);
+    });
+
+    const dayTabs = document.querySelectorAll('.day-tab');
+    const dayPanels = document.querySelectorAll('.agenda[data-day-panel]');
+
+    dayTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        dayTabs.forEach(t => {
+          t.classList.toggle('active', t === tab);
+          t.setAttribute('aria-selected', t === tab ? 'true' : 'false');
+        });
+        dayPanels.forEach(panel => {
+          panel.hidden = panel.dataset.dayPanel !== tab.dataset.day;
+        });
+      });
     });
   </script>
 </body>
