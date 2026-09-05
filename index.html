@@ -362,6 +362,27 @@
       color: var(--muted);
     }
 
+    .slides-link {
+      display: flex;
+      width: fit-content;
+      align-items: center;
+      gap: 5px;
+      margin-top: 6px;
+      padding: 3px 10px;
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    .slides-link:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
     .agenda-item.discussion {
       background: var(--soft);
       border-left-color: var(--nuwro-gold);
@@ -686,47 +707,47 @@
           </div>
 
           <ol class="agenda" data-day-panel="wed">
-            <li class="agenda-item talk"><span class="agenda-time">09:00–09:30</span><span class="agenda-title">Jan Sobczyk</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">09:30–10:20</span><span class="agenda-title">Kajetan Niewczas</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/jan-sobczyk.pdf"><span class="agenda-time">09:00–09:30</span><span class="agenda-title">Jan Sobczyk</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/kajetan-niewczas.pdf"><span class="agenda-time">09:30–10:20</span><span class="agenda-title">Kajetan Niewczas<span class="talk-title">Physics Landscape of NuWro</span></span></li>
             <li class="agenda-item break"><span class="agenda-time">10:20–10:50</span><span class="agenda-title">Coffee break</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">10:50–11:40</span><span class="agenda-title">Hemant Prasad</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">11:40–12:30</span><span class="agenda-title">Rwik Dharmapal Banerjee</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/hemant-prasad.pdf"><span class="agenda-time">10:50–11:40</span><span class="agenda-title">Hemant Prasad</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/rwik-dharmapal-banerjee.pdf"><span class="agenda-time">11:40–12:30</span><span class="agenda-title">Rwik Dharmapal Banerjee</span></li>
             <li class="agenda-item discussion"><span class="agenda-time">12:30–13:00</span><span class="agenda-title">Discussion</span></li>
             <li class="agenda-item break"><span class="agenda-time">13:00–14:30</span><span class="agenda-title">Lunch break</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">14:30–15:20</span><span class="agenda-title">Xianguo Lu</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/xianguo-lu.pdf"><span class="agenda-time">14:30–15:20</span><span class="agenda-title">Xianguo Lu</span></li>
             <li class="agenda-item break"><span class="agenda-time">15:20–15:50</span><span class="agenda-title">Coffee break</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">15:50–16:40</span><span class="agenda-title">Natalie Jachowicz</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">16:40–17:00</span><span class="agenda-title">Alexandra Trettin<span class="talk-title">Data driven uncertainties for neutrino cross sections</span></span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/natalie-jachowicz.pdf"><span class="agenda-time">15:50–16:40</span><span class="agenda-title">Natalie Jachowicz</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/alexandra-trettin.pdf"><span class="agenda-time">16:40–17:00</span><span class="agenda-title">Alexandra Trettin<span class="talk-title">Data driven uncertainties for neutrino cross sections</span></span></li>
             <li class="agenda-item discussion"><span class="agenda-time">17:00–17:30</span><span class="agenda-title">Discussion</span></li>
             <li class="agenda-item social"><span class="agenda-time">18:30</span><span class="agenda-title">Conference dinner</span></li>
           </ol>
 
           <ol class="agenda" data-day-panel="thu" hidden>
-            <li class="agenda-item talk"><span class="agenda-time">09:00–09:50</span><span class="agenda-title">Clarence Wret</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/clarence-wret.pdf"><span class="agenda-time">09:00–09:50</span><span class="agenda-title">Clarence Wret<span class="talk-title">Single pion production in NEUT</span></span></li>
             <li class="agenda-item break"><span class="agenda-time">09:50–10:20</span><span class="agenda-title">Coffee break</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">10:20–11:10</span><span class="agenda-title">Raul Gonzalez-Jimenez<span class="talk-title">Distorted waves, nuclear transparency and intranuclear cascade models</span></span></li>
-            <li class="agenda-item talk"><span class="agenda-time">11:10–12:00</span><span class="agenda-title">Joanna Sobczyk</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/raul-gonzalez-jimenez.pdf"><span class="agenda-time">10:20–11:10</span><span class="agenda-title">Raul Gonzalez-Jimenez<span class="talk-title">Distorted waves, nuclear transparency and intranuclear cascade models</span></span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/joanna-sobczyk.pdf"><span class="agenda-time">11:10–12:00</span><span class="agenda-title">Joanna Sobczyk</span></li>
             <li class="agenda-item discussion"><span class="agenda-time">12:00–12:30</span><span class="agenda-title">Discussion</span></li>
             <li class="agenda-item break"><span class="agenda-time">12:30–14:00</span><span class="agenda-title">Lunch break</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">14:00–14:20</span><span class="agenda-title">Alma Cavallin</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">14:20–15:10</span><span class="agenda-title">Alexis Nikolakopoulos</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/alma-cavallin.pdf"><span class="agenda-time">14:00–14:20</span><span class="agenda-title">Alma Cavallin</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/alexis-nikolakopoulos.pdf"><span class="agenda-time">14:20–15:10</span><span class="agenda-title">Alexis Nikolakopoulos</span></li>
             <li class="agenda-item break"><span class="agenda-time">15:10–15:40</span><span class="agenda-title">Coffee break</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">15:40–16:30</span><span class="agenda-title">Paloma Casalé<span class="talk-title">Two-Pion Production and DIS Contributions to Inclusive Electron-Nucleus Scattering</span></span></li>
-            <li class="agenda-item talk"><span class="agenda-time">16:30–17:15</span><span class="agenda-title">Cesar Jesus Valls</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/paloma-casale.pdf"><span class="agenda-time">15:40–16:30</span><span class="agenda-title">Paloma Casalé<span class="talk-title">Two-Pion Production and DIS Contributions to Inclusive Electron-Nucleus Scattering</span></span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/cesar-jesus-valls.pdf"><span class="agenda-time">16:30–17:15</span><span class="agenda-title">Cesar Jesus Valls</span></li>
             <li class="agenda-item discussion"><span class="agenda-time">17:15–17:45</span><span class="agenda-title">Discussion</span></li>
           </ol>
 
           <ol class="agenda" data-day-panel="fri" hidden>
-            <li class="agenda-item talk"><span class="agenda-time">09:00–09:50</span><span class="agenda-title">Mathias El Baz</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/mathias-el-baz.pdf"><span class="agenda-time">09:00–09:50</span><span class="agenda-title">Mathias El Baz</span></li>
             <li class="agenda-item break"><span class="agenda-time">09:50–10:20</span><span class="agenda-title">Coffee break</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">10:20–11:10</span><span class="agenda-title">Luis Bonilla</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">11:10–11:30</span><span class="agenda-title">Beata Kowal<span class="talk-title">Modeling lepton-nucleus scattering cross sections using transfer learning technique</span></span></li>
-            <li class="agenda-item talk"><span class="agenda-time">11:30–12:00</span><span class="agenda-title">Krzysztof Graczyk</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/luis-bonilla.pdf"><span class="agenda-time">10:20–11:10</span><span class="agenda-title">Luis Bonilla</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/beata-kowal.pdf"><span class="agenda-time">11:10–11:30</span><span class="agenda-title">Beata Kowal<span class="talk-title">Modeling lepton-nucleus scattering cross sections using transfer learning technique</span></span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/krzysztof-graczyk.pdf"><span class="agenda-time">11:30–12:00</span><span class="agenda-title">Krzysztof Graczyk<span class="talk-title">From shallow to deep neural networks: applications to lepton scattering problems</span></span></li>
             <li class="agenda-item discussion"><span class="agenda-time">12:00–12:30</span><span class="agenda-title">Discussion</span></li>
             <li class="agenda-item break"><span class="agenda-time">12:30–14:00</span><span class="agenda-title">Lunch break</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">14:00–14:30</span><span class="agenda-title">Cezary Juszczak</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/cezary-juszczak.pdf"><span class="agenda-time">14:00–14:30</span><span class="agenda-title">Cezary Juszczak</span></li>
             <li class="agenda-item break"><span class="agenda-time">14:30–15:00</span><span class="agenda-title">Coffee break</span></li>
-            <li class="agenda-item talk"><span class="agenda-time">15:00–15:45</span><span class="agenda-title">Qiyu Yan</span></li>
+            <li class="agenda-item talk" data-slides="assets/slides/qiyu-yan.pdf"><span class="agenda-time">15:00–15:45</span><span class="agenda-title">Qiyu Yan</span></li>
             <li class="agenda-item discussion"><span class="agenda-time">15:45–17:15</span><span class="agenda-title">Final discussion — <strong>Federico Sanchez</strong></span></li>
           </ol>
 
@@ -822,6 +843,22 @@
           panel.hidden = panel.dataset.dayPanel !== tab.dataset.day;
         });
       });
+    });
+
+    document.querySelectorAll('.agenda-item[data-slides]').forEach(item => {
+      const url = item.dataset.slides;
+      fetch(url, { method: 'HEAD' })
+        .then(res => {
+          if (!res.ok) return;
+          const link = document.createElement('a');
+          link.className = 'slides-link';
+          link.href = url;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          link.textContent = '📄 Slides';
+          item.querySelector('.agenda-title').appendChild(link);
+        })
+        .catch(() => {});
     });
   </script>
 </body>
