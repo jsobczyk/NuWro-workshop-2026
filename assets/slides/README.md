@@ -16,6 +16,7 @@ Expected filenames (one PDF per talk):
 - xianguo-lu.pdf
 - natalie-jachowicz.pdf
 - alexandra-trettin.pdf
+- seisho-abe.pdf
 - clarence-wret.pdf
 - raul-gonzalez-jimenez.pdf
 - joanna-sobczyk.pdf
