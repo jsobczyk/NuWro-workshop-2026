@@ -506,6 +506,32 @@
       padding: 20px;
     }
 
+    /* Photos */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+
+    .photo-grid a {
+      display: block;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .photo-grid img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform .2s ease;
+    }
+
+    .photo-grid a:hover img {
+      transform: scale(1.03);
+    }
+
     footer {
       border-top: 1px solid var(--line);
       color: var(--muted);
@@ -576,6 +602,7 @@
         <li><button class="nav-button" data-panel="registration">Registration</button></li>
         <li><button class="nav-button" data-panel="timetable">Timetable</button></li>
         <li><button class="nav-button" data-panel="accommodation">Accommodation</button></li>
+        <li><button class="nav-button" data-panel="photos">Photos</button></li>
       </ul>
     </nav>
 
@@ -780,6 +807,20 @@
               50-201 Wrocław</p>
               <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Campanile+Hotel+Wroclaw+Stare+Miasto+Wladyslawa+Jagielly+7" target="_blank" rel="noopener">Campanile Hotel on Google Maps</a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="photos" class="panel" aria-labelledby="photos-title">
+        <div class="page-card">
+          <h2 id="photos-title">Photos</h2>
+          <div class="photo-grid">
+            <a href="assets/photos/group-photo-1.jpg" target="_blank" rel="noopener">
+              <img src="assets/photos/group-photo-1.jpg" alt="NuWro Workshop 2026 group photo">
+            </a>
+            <a href="assets/photos/group-photo-2.jpg" target="_blank" rel="noopener">
+              <img src="assets/photos/group-photo-2.jpg" alt="NuWro Workshop 2026 group photo">
+            </a>
           </div>
         </div>
       </section>
